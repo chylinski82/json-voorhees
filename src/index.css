@@ -1,13 +1,136 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* base styles */
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Quicksand";
+  font-weight: 600;
+  font-size: 18px;
+  color: whitesmoke;
+  background-color: #000066;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.highlight, h1, h2, .apart span span, #headings h3 {
+  color: #ff5c33;
+}
+
+.content {
+  width: 100%;
+}
+
+.main {
+  padding: 40px 20%;
+}
+
+a:hover {
+  color:  #52ff52;
+}
+
+.options {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: fixed;
+  top: 65px;
+  padding: 20px 0;
+}
+
+h1, h2, #headings h3 {
+  padding-bottom: 2%;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3em; 
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 1.75em;
+}
+
+h3 {
+  font-size: 1.25em;
+}
+
+p {
+  line-height: 1.5;
+}
+
+.apart {
+  display: flex;
+  justify-content: space-between;
+}
+
+.space { margin-top: 150px; }
+
+/* NAVBAR */
+
+.navbar {
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  margin: 0 auto;
+  border-bottom: 2px solid #ff5c33;
+}
+
+.navbar .links {
+  margin-left: auto;
+}
+
+a {
+  text-decoration: none;
+  color:#ffbf00;
+} 
+
+.navbar a {
+  
+  margin-left: 24px;
+  padding: 6px;
+}
+
+/* Photos */
+#headings {
+  height: 60px;
+  position: sticky;
+  top: 130px;
+  padding: 10px 10%;
+}
+
+.thumbimage {
+  border: 2px solid whitesmoke;
+}
+
+.thumbimage:hover {
+  border: 10px solid #ff5c33;
+  border-radius: 10px;
+}
+
+.photos {
+  padding: 5% 10%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.photo {
+  margin: 1% 10%;
+}
+
+.photo p {
+  font-size: 0.8em;
+  min-width: 100%;
+}
+
+#album-selection {
+  position: relative;
+  left: 40%;
+}
+
+/* ToDos */
+
+#delete-todo {
+  width: 20%;
+  height: 50px;
 }
