@@ -1,6 +1,6 @@
-import { useHistory } from "react-router-dom";
+import { useEffect } from "react";
 
-const DataMap = ({ data, status, deleted, setDeleted, user }) => {
+const DataMap = ({ data, status, deleted, setDeleted, user, individualStatus, setIndividualStatus }) => {
 
     const handleClick = (data) => {
         fetch(`https://jsonplaceholder.typicode.com/todos/${data.id}`, {
@@ -16,8 +16,7 @@ const DataMap = ({ data, status, deleted, setDeleted, user }) => {
     let filterUser;                                                     //array sorted by status        
     let dataToMap;                                                      //array sorted by status and user
     let key = 0;
-    let toggle = false;
-
+ 
     if(status === 'completed') {
         filterUser = completed;
 
@@ -37,8 +36,6 @@ const DataMap = ({ data, status, deleted, setDeleted, user }) => {
 
     }
 
-    const history = useHistory();
-
     return (
         dataToMap.map(data => {
             key++;
@@ -48,13 +45,12 @@ const DataMap = ({ data, status, deleted, setDeleted, user }) => {
                         <div className="apart">
                             <button onClick={() => handleClick(data)} id="delete-todo">DELETE ITEM</button><h2>{data.title}</h2>
                         </div>
-                        {!toggle && <p className="apart">
+                        <p className="apart">
                             Nr: {data.id} <span>Status: {!data.completed && <span>Not </span>}completed</span>
-                        </p>}
+                        </p>
                         <div className="apart">
                             <h3>User: {data.userId}</h3>
                             <button onClick={() => {
-                                toggle = true;
                                 fetch(`https://jsonplaceholder.typicode.com/todos/${data.id}`, {
                                     method: 'PUT',
                                     body: JSON.stringify({ completed: !data.completed }),
@@ -66,7 +62,6 @@ const DataMap = ({ data, status, deleted, setDeleted, user }) => {
                                     console.log(json);
                                     data.completed = json.completed;
                                   });
-                                
                             }}>Toggle status</button>
                         </div>
                         <br/><hr/><br/>

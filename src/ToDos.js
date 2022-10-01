@@ -9,12 +9,12 @@ const ToDos = () => {
     const [toDoNumber, setToDoNumber] = useState(null);             // chosen data set
     const [allToDos, setAllToDos] = useState(true);                 // toggle to view all data sets
     const [status, setStatus] = useState('all');                    // sort by status  
-    const [individualStatus, setIndividualStatus] = useState() // to toggle status of individual data sets
+    const [individualStatus, setIndividualStatus] = useState()     // to toggle status of individual data sets
     const [user, setUser] = useState('all');                        // sort by user
     const [enterPressed, setEnterPressed] = useState(false);        // variable to prevent auto submit after first submit, 
                                                                     // user required to press enter
     const [deleted, setDeleted] = useState([]);                     // deletes whole item, passed as prop to DataMap
-    
+                     
     const handleSubmit = (e) => {                                   // handles status choice
         e.preventDefault();
         setEnterPressed(true);
