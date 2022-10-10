@@ -18,6 +18,7 @@ const Photos = () => {
                     <input  type="number"
                             min="1"
                             max="100"
+                            value={album}
                             onChange={(e) => setAlbum(Math.min(e.target.value, 100))} />
                 </form>
             </div>

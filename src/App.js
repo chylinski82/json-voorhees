@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './Navbar';
 import Home from './Home';
 import ToDos from "./ToDos";
+import Posts from "./Posts";
 import Photos from "./Photos";
 
 function App () {
@@ -19,6 +20,9 @@ function App () {
             </Route>
             <Route exact path="/todos">
               <ToDos />
+            </Route>
+            <Route path="/posts">
+              <Posts />
             </Route>
             <Route path="/photos">
               <Photos />

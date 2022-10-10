@@ -1,27 +1,26 @@
-import { useEffect } from "react";
-
-const DataMap = ({ data, status, deleted, setDeleted, user, individualStatus, setIndividualStatus }) => {
-
-    const handleClick = (data) => {
-        fetch(`https://jsonplaceholder.typicode.com/todos/${data.id}`, {
-            method: 'DELETE',
-        }).then(() => {
-            setDeleted(deleted.concat(data.title));
-        })
-        
-    }
-
-    const completed = data.filter(data => data.completed);        //narrows down data to status completed
-    const notCompleted = data.filter(data => !data.completed);    //narrows down data to status completed
+const DataMap = ({ data, 
+                   status, 
+                   deleted, 
+                   handleClickDelete, 
+                   user, 
+                   handleClickStatus, 
+                   edit, 
+                   setEdit,
+                   title,
+                   setNewTitle,
+                   handleClickEdit }) => {
+                          
     let filterUser;                                                     //array sorted by status        
     let dataToMap;                                                      //array sorted by status and user
     let key = 0;
  
-    if(status === 'completed') {
-        filterUser = completed;
+    
+
+    if(status === 'completed') {                                        //narrows down data to status completed
+        filterUser = data.filter(data => data.completed);      
 
     } else if(status === 'not completed') {
-        filterUser = notCompleted;
+        filterUser = data.filter(data => !data.completed);
 
     } else {
         filterUser = data;                                        //array stays intact (status === 'all')
@@ -41,9 +40,15 @@ const DataMap = ({ data, status, deleted, setDeleted, user, individualStatus, se
             key++;
             return (
                 <div key={key}>
-                    {!deleted.includes(data.title) && <div>
+                    {data.title && !deleted.includes(data.title) && <div>
                         <div className="apart">
-                            <button onClick={() => handleClick(data)} id="delete-todo">DELETE ITEM</button><h2>{data.title}</h2>
+                            <button onClick={() => handleClickDelete(data)} className="delete">DELETE ITEM</button>
+                            {edit !== data.id ? <h2>{title[data.id - 1]}</h2>
+                                              : <h2><textarea defaultValue={title[data.id - 1]}
+                                                              onChange={e => {
+                                                                e.target.value && setNewTitle(e.target.value);
+                                                                !e.target.value && setNewTitle('-- untitled --');
+                                                              }} /></h2>}                                         
                         </div>
                         <p className="apart">
                             Nr: {data.id} <span>Status: {!data.completed && <span>Not </span>}completed</span>
@@ -51,18 +56,9 @@ const DataMap = ({ data, status, deleted, setDeleted, user, individualStatus, se
                         <div className="apart">
                             <h3>User: {data.userId}</h3>
                             <button onClick={() => {
-                                fetch(`https://jsonplaceholder.typicode.com/todos/${data.id}`, {
-                                    method: 'PUT',
-                                    body: JSON.stringify({ completed: !data.completed }),
-                                    headers: {
-                                        'Content-type': 'application/json; charset=UTF-8',
-                                      },
-                                }).then(res => res.json())
-                                  .then(json => {
-                                    console.log(json);
-                                    data.completed = json.completed;
-                                  });
-                            }}>Toggle status</button>
+                                edit !== data.id ? setEdit(data.id)
+                                                 : handleClickEdit(data)}}>Edit content</button>
+                            <button onClick={() => handleClickStatus(data)}>Toggle status</button>
                         </div>
                         <br/><hr/><br/>
                     </div>}

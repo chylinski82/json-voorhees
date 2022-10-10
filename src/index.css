@@ -128,9 +128,23 @@ a {
   left: 40%;
 }
 
-/* ToDos */
+/* ToDos, Posts */
 
-#delete-todo {
-  width: 20%;
-  height: 50px;
+.delete {
+  min-width: 20%;
+  max-height: 50px;
+}
+
+h2 textarea {
+  color: #ff5c33;
+  text-align: unset;
+  max-width: 80%;
+}
+
+p textarea, h2 textarea {
+  border: none;
+}
+
+.todo-top {
+  display: flex;
 }
