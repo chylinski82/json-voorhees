@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './Navbar';
@@ -8,6 +8,7 @@ import Posts from "./Posts";
 import Photos from "./Photos";
 
 function App () {
+  const [album, setAlbum] = useState(1);
 
   return (
     <Router>
@@ -16,7 +17,7 @@ function App () {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home album={album} setAlbum={setAlbum}/>
             </Route>
             <Route exact path="/todos">
               <ToDos />
@@ -25,7 +26,7 @@ function App () {
               <Posts />
             </Route>
             <Route path="/photos">
-              <Photos />
+              <Photos album={album} setAlbum={setAlbum}/>
             </Route>
           </Switch>
         </div>
