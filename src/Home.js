@@ -2,8 +2,6 @@ import SearchBar from "./SearchBar";
 
 const Home = (props) => {
 
-    const { album, setAlbum } = props;
-
     return (
         
         <div className="main">
@@ -15,7 +13,7 @@ const Home = (props) => {
                 search for data.
             </p>
             <br/>
-            <SearchBar album={album} setAlbum={setAlbum}/>
+            <SearchBar />
 
         </div>
     );

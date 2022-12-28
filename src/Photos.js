@@ -37,7 +37,8 @@ const Photos = () => {
                             <a href={ data.url } 
                                onMouseEnter={() => setHovered(data.id + ': ' + data.title)}
                                onMouseLeave={() => setHovered(false)}><img className="thumbimage" 
-                                                                     src={ data.thumbnailUrl } /></a>                          
+                                                                     src={ data.thumbnailUrl } 
+                                                                     alt=""/></a>                          
                         </div>
                     )
                 })}

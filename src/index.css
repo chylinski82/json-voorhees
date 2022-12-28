@@ -148,3 +148,10 @@ p textarea, h2 textarea {
 .todo-top {
   display: flex;
 }
+
+/*    Search Bar     */
+
+#search {
+  width: 100%;
+  margin: 15px 0 20px;
+}
