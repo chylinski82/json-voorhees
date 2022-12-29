@@ -17,7 +17,7 @@ function App () {
         <div className="content">
           <Switch>
             <Route exact path="/">
-              <Home />
+              <Home album={album} setAlbum={setAlbum}/>
             </Route>
             <Route exact path="/todos">
               <ToDos />
